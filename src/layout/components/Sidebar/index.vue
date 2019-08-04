@@ -14,6 +14,7 @@
       >
         <sidebar-item v-for="route in routes" :key="route.path" :item="route" :base-path="route.path" />
       </el-menu>
+      侧边栏
     </el-scrollbar>
   </div>
 </template>

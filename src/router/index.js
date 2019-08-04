@@ -51,41 +51,136 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '概况', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/goods',
     component: Layout,
     redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'example' },
+    name: 'Goods',
+    meta: { title: '商品', icon: 'example' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: 'goods',
+        name: 'Goods',
+        component: () => import('@/views/goods/goodsManage'),
+        meta: { title: '商品管理', icon: 'table' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'goods',
+        name: 'Goods',
+        component: () => import('@/views/goods/kind'),
+        meta: { title: '分类管理', icon: 'tree' }
+      },
+      {
+        path: 'tool',
+        name: 'Tool',
+        component: () => import('@/views/goods/index'),
+        meta: { title: '商品工具', icon: 'table' },
+        children: [
+          {
+            path: 'tool',
+            name: 'Tool',
+            component: () => import('@/views/goods/tool/change'),
+            meta: { title: '批量改价', icon: 'tree' }
+          },
+          {
+            path: 'tool',
+            name: 'Tool',
+            component: () => import('@/views/goods/tool/import'),
+            meta: { title: '商品导入', icon: 'tree' }
+          }
+        ]
       }
     ]
   },
 
+  // {
+  //   path: '/form',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       name: 'Form',
+  //       component: () => import('@/views/form/index'),
+  //       meta: { title: '订单', icon: 'form' }
+  //     }
+  //   ]
+  // },
+
+  // {
+  //   path: '/nested',
+  //   component: Layout,
+  //   redirect: '/nested/menu1',
+  //   name: 'Nested',
+  //   meta: {
+  //     title: '订单',
+  //     icon: 'nested'
+  //   },
+  //   children: [
+  //     {
+  //       path: 'oreder',
+  //       component: () => import('@/views/order/index'),
+  //       meta: { title: '订单查询' }
+  //     },
+  //     {
+  //       path: 'menu1',
+  //       component: () => import('@/views/nested/menu1/index'), // Parent router-view
+  //       name: 'Menu1',
+  //       meta: { title: '订单处理' },
+  //       children: [
+  //         {
+  //           path: 'menu1-1',
+  //           component: () => import('@/views/nested/menu1/menu1-1'),
+  //           name: 'Menu1-1',
+  //           meta: { title: '批量发货' }
+  //         },
+  //         {
+  //           path: 'menu1-3',
+  //           component: () => import('@/views/nested/menu1/menu1-3'),
+  //           name: 'Menu1-3',
+  //           meta: { title: '退款维权' }
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // },
+
   {
-    path: '/form',
+    path: '/order',
     component: Layout,
+    redirect: '/example/table',
+    name: 'Goods',
+    meta: { title: '订单', icon: 'example' },
     children: [
       {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
+        path: 'order',
+        name: 'Order',
+        component: () => import('@/views/order/query'),
+        meta: { title: '订单查询', icon: 'table' }
+      },
+      {
+        path: 'order',
+        name: 'Order',
+        component: () => import('@/views/order/index'),
+        meta: { title: '订单处理', icon: 'table' },
+        children: [
+          {
+            path: 'handle',
+            name: 'Handle',
+            component: () => import('@/views/order/handle/delivery'),
+            meta: { title: '批量发货', icon: 'tree' }
+          },
+          {
+
+            path: 'handle',
+            name: 'Handle',
+            component: () => import('@/views/order/handle/refund'),
+            meta: { title: '退款维权', icon: 'tree' }
+          }
+        ]
       }
     ]
   },
@@ -96,7 +191,7 @@ export const constantRoutes = [
     redirect: '/nested/menu1',
     name: 'Nested',
     meta: {
-      title: 'Nested',
+      title: '创意',
       icon: 'nested'
     },
     children: [
@@ -104,13 +199,13 @@ export const constantRoutes = [
         path: 'menu1',
         component: () => import('@/views/nested/menu1/index'), // Parent router-view
         name: 'Menu1',
-        meta: { title: 'Menu1' },
+        meta: { title: '创意管理' },
         children: [
           {
             path: 'menu1-1',
             component: () => import('@/views/nested/menu1/menu1-1'),
             name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
+            meta: { title: 'two' }
           },
           {
             path: 'menu1-2',
@@ -148,16 +243,16 @@ export const constantRoutes = [
     ]
   },
 
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
-      }
-    ]
-  },
+  // {
+  //   path: 'external-link',
+  //   component: Layout,
+  //   children: [
+  //     {
+  //       path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
+  //       meta: { title: 'External Link', icon: 'link' }
+  //     }
+  //   ]
+  // },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
